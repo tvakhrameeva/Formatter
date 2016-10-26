@@ -1,5 +1,8 @@
-package com.company;
+package com.mycompany.app;
 
+/**
+ * Created by user on 10/26/16.
+ */
 class Formatter {
 
     private static int SpaceCount = 4;
