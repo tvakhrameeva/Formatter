@@ -1,31 +1,41 @@
+/**
+ * My package
+ */
 package com.mycompany.app;
 
 /**
- * Created by user on 10/26/16.
+ * Formatter
  */
 class Formatter {
 
-    private static int SpaceCount = 4;
+    /**
+     * Space count
+     */
+    private final int spaceCount = 4;
 
-    static String Format(String code)
-    {
+    /**
+     *
+     * @param code Code
+     * @return formatted code
+     */
+    public String format(final String code) {
         StringBuilder builder = new StringBuilder(code.replace(" ", ""));
 
         int nestedLevel = 0;
 
-        for(int i=0;i<builder.length();i++)
-        {
-            if (builder.charAt(i)=='{') {
+        for (int i = 0; i < builder.length(); i++) {
+            if (builder.charAt(i) == '{') {
                 nestedLevel += 1;
 
-                if (i < (builder.length() - 1) && builder.charAt(i+1) != '\n') {
+                if (i < (builder.length() - 1)
+                        && builder.charAt(i + 1) != '\n') {
                     builder.insert(i + 1, '\n');
                     i++;
                     continue;
                 }
             }
 
-            if (builder.charAt(i)=='}') {
+            if (builder.charAt(i) == '}') {
                 nestedLevel -= 1;
 
                 if (i > 0 && builder.charAt(i - 1) != '\n') {
@@ -33,16 +43,17 @@ class Formatter {
                     i++;
                 }
 
-                if (i < (builder.length()-1) && builder.charAt(i+1) != '\n') {
-                    builder.insert(i+1, '\n');
+                if (i < (builder.length() - 1)
+                        && builder.charAt(i + 1) != '\n') {
+                    builder.insert(i + 1, '\n');
                     i++;
                 }
 
                 continue;
             }
 
-            if (builder.charAt(i) == ';' && (i < builder.length() - 1) && builder.charAt(i + 1) != '\n')
-            {
+            if (builder.charAt(i) == ';' && (i < builder.length() - 1)
+                    && builder.charAt(i + 1) != '\n') {
                 builder.insert(i + 1, '\n');
                 i++;
             }
