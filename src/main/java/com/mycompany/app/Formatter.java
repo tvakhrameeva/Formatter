@@ -9,11 +9,6 @@ package com.mycompany.app;
 class Formatter {
 
     /**
-     * Space count
-     */
-    private final int spaceCount = 4;
-
-    /**
      *
      * @param code Code
      * @return formatted code
@@ -21,11 +16,8 @@ class Formatter {
     public String format(final String code) {
         StringBuilder builder = new StringBuilder(code.replace(" ", ""));
 
-        int nestedLevel = 0;
-
         for (int i = 0; i < builder.length(); i++) {
             if (builder.charAt(i) == '{') {
-                nestedLevel += 1;
 
                 if (i < (builder.length() - 1)
                         && builder.charAt(i + 1) != '\n') {
@@ -36,7 +28,6 @@ class Formatter {
             }
 
             if (builder.charAt(i) == '}') {
-                nestedLevel -= 1;
 
                 if (i > 0 && builder.charAt(i - 1) != '\n') {
                     builder.insert(i, '\n');
