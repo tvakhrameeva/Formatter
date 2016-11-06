@@ -5,5 +5,5 @@ package com.mycompany.app.readers;
  */
 public interface IReader {
     boolean hasChars();
-    char readChar();
+    char readChar() throws EndOfSourceException;
 }

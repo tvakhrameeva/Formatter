@@ -3,11 +3,15 @@
  */
 package com.mycompany.app;
 
+import com.mycompany.app.readers.EndOfSourceException;
+
+import com.mycompany.app.readers.StringReader;
+
 /**
  * Hello world!
  *
  */
-public final class App {
+public final class App  {
 
     private App() {
     }
@@ -15,14 +19,15 @@ public final class App {
     /**
      *
      * @param args Arguments
+     * @throws EndOfSourceException
      */
-    public static void main(final String[] args) {
+    public static void main(final String[] args) throws EndOfSourceException {
         Formatter formatter = new Formatter();
 
-        String testCode = "{ command1; { command2; } command3;}";
+        StringReader testReader = new StringReader("eeeeeeeek");
 
-        System.out.println("Given code:\n" + testCode);
+        System.out.println("Given code:\n" + testReader);
         System.out.println("Code after formatting:\n" +
-                formatter.format(testCode));
+                formatter.format(testReader));
     }
 }

@@ -27,12 +27,32 @@ public class StringReaderTest extends TestCase {
     /**
      * Rigourous Test :-)
      */
-    public void testStringReader() {
+    public void testHasCharsWithEmpty(){
+        StringReader emptyStringReader= new StringReader("");
+        assertFalse(emptyStringReader.hasChars());
+    }
+
+
+    public void testHasChars() throws EndOfSourceException {
+
         StringReader stringReader= new StringReader("fdc");
         assertTrue(stringReader.hasChars());
-        assertTrue(stringReader.readChar()=='f');
-        assertTrue(stringReader.readChar()=='d');
-        assertTrue(stringReader.readChar()=='c');
+        assertTrue(stringReader.readChar() == 'f');
+        assertTrue(stringReader.readChar() == 'd');
+        assertTrue(stringReader.readChar() == 'c');
         assertFalse(stringReader.hasChars());
+
+    }
+
+    public  void testException()   {
+        StringReader reader = new StringReader("");
+
+        try {
+            reader.readChar();
+            fail();
+        }
+        catch (EndOfSourceException e)
+        {
+        }
     }
 }

@@ -26,8 +26,10 @@ public class StringReader implements IReader {
     /**
      * @return buf
      */
-    public char readChar() {
-
+    public char readChar() throws EndOfSourceException {
+        if (!hasChars()) {
+            throw new EndOfSourceException();
+        }
         char buf = s.charAt(i);
         i++;
         return buf;
