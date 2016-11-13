@@ -19,12 +19,13 @@ public final class App  {
     /**
      *
      * @param args Arguments
-     * @throws EndOfSourceException
+     * @throws EndOfSourceException exception
+     * @throws MoreThenOneLiteralInQuotes exception
      */
-    public static void main(final String[] args) throws EndOfSourceException {
+    public static void main(final String[] args) throws EndOfSourceException, MoreThenOneLiteralInQuotes {
         Formatter formatter = new Formatter();
 
-        StringReader testReader = new StringReader("eeeeeeeek");
+        StringReader testReader = new StringReader("eee\\y''\\");
 
         System.out.println("Given code:\n" + testReader);
         System.out.println("Code after formatting:\n" +

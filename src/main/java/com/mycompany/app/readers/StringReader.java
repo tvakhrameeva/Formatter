@@ -7,8 +7,9 @@ public class StringReader implements IReader {
     private String s = new String();
     private int i = 0;
 
+
     /**
-     * @param str
+     * @param str string
      */
     public StringReader(final String str) {
         s = new String(str);
@@ -24,7 +25,8 @@ public class StringReader implements IReader {
         return true;
     }
     /**
-     * @return buf
+     * @return buf char
+     * @throws EndOfSourceException exception
      */
     public char readChar() throws EndOfSourceException {
         if (!hasChars()) {
@@ -32,6 +34,14 @@ public class StringReader implements IReader {
         }
         char buf = s.charAt(i);
         i++;
+
+
+
         return buf;
+
+
     }
+
+
+
 }
